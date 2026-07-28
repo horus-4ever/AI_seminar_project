@@ -1,0 +1,20 @@
+{
+  "history": [
+    {
+      "date": "2026-07-20",
+      "used_items": [
+        {
+          "ingredient": "egg",
+          "quantity": 2
+        }
+      ]
+    }
+  ],
+
+  "user_preferences": {
+    "favorite_cuisine": "Japanese",
+    "health_goal": "high protein",
+    "max_cooking_time": "30 minutes",
+    "avoid": []
+  }
+}

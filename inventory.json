@@ -1,0 +1,43 @@
+{
+  "inventory_summary": [
+    {
+      "ingredient": "egg",
+      "detected_count": 6,
+      "estimated_quantity": {
+        "amount": 300,
+        "unit": "g"
+      },
+      "average_confidence": 0.94
+    },
+    {
+      "ingredient": "tomato",
+      "detected_count": 3,
+      "estimated_quantity": {
+        "amount": 240,
+        "unit": "g"
+      },
+      "average_confidence": 0.89
+    },
+    {
+      "ingredient": "milk",
+      "detected_count": 1,
+      "estimated_quantity": {
+        "amount": 500,
+        "unit": "ml"
+      },
+      "average_confidence": 0.89
+    }
+  ],
+
+  "user_preferences": {
+    "goal": "healthy balanced diet",
+    "diet_type": "normal",
+    "daily_calorie_target": 2000,
+    "preferred_meals": [
+      "breakfast",
+      "lunch",
+      "dinner"
+    ],
+    "allergies": []
+  }
+}
