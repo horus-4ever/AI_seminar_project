@@ -1,0 +1,9 @@
+# AI Smart Recipe Assistant dashboard + YOLO inference
+# Recommended for Python 3.10–3.12
+
+fastapi>=0.115,<1.0
+uvicorn[standard]>=0.30,<1.0
+python-multipart>=0.0.9,<1.0
+ultralytics>=8.3,<9.0
+opencv-python-headless>=4.10,<5.0
+pillow>=10.0,<12.0
