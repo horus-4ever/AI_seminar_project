@@ -1,0 +1,145 @@
+{
+    "created_at_utc": "2026-07-29T05:35:23.664283+00:00",
+    "completed_at_utc": "2026-07-29T05:35:23.956356+00:00",
+    "media": {
+        "type": "image",
+        "original_filename": "DSC_5677_JPG_jpg.rf.f86c114f1535027f78040f891bfe5f10.jpg",
+        "saved_filename": "20260729T053523_664283Z_ae5a6778_DSC_5677_JPG_jpg.rf.f86c114f1535027f78040f891bfe5f10.jpg",
+        "saved_path": "uploads\\20260729T053523_664283Z_ae5a6778_DSC_5677_JPG_jpg.rf.f86c114f1535027f78040f891bfe5f10.jpg",
+        "content_type": "image/jpeg"
+    },
+    "user_preferences": {
+        "meal_type": "dinner",
+        "diet_type": "normal",
+        "nutrition_goal": "high_protein",
+        "servings": 2,
+        "maximum_cooking_time_minutes": 30,
+        "preferred_cuisine": "any",
+        "spice_level": "medium",
+        "cooking_skill": "beginner",
+        "allergies": [],
+        "excluded_ingredients": [],
+        "available_appliances": [
+            "stove",
+            "microwave",
+            "oven"
+        ],
+        "additional_request": null
+    },
+    "inventory_summary": [
+        {
+            "ingredient": "green leaves",
+            "detected_count": 1,
+            "average_confidence": 0.956
+        },
+        {
+            "ingredient": "meat",
+            "detected_count": 2,
+            "average_confidence": 0.902
+        },
+        {
+            "ingredient": "milk",
+            "detected_count": 1,
+            "average_confidence": 0.864
+        },
+        {
+            "ingredient": "chicken",
+            "detected_count": 1,
+            "average_confidence": 0.8602
+        },
+        {
+            "ingredient": "butter",
+            "detected_count": 1,
+            "average_confidence": 0.8423
+        },
+        {
+            "ingredient": "apple",
+            "detected_count": 1,
+            "average_confidence": 0.7955
+        },
+        {
+            "ingredient": "banana",
+            "detected_count": 2,
+            "average_confidence": 0.7622
+        },
+        {
+            "ingredient": "corn",
+            "detected_count": 1,
+            "average_confidence": 0.5959
+        }
+    ],
+    "id": 7,
+    "llm_result": {
+        "recipe": {
+            "name": "Grilled Chicken with Green Leaves and Corn",
+            "description": "A quick and easy dinner recipe that combines the detected ingredients with the user's preferences for a high-protein meal.",
+            "time_minutes": 20,
+            "difficulty": "beginner",
+            "ingredients": [
+                {
+                    "name": "chicken",
+                    "quantity": 1,
+                    "unit": "breast"
+                },
+                {
+                    "name": "green leaves",
+                    "quantity": 1,
+                    "unit": "cup"
+                },
+                {
+                    "name": "corn",
+                    "quantity": 1,
+                    "unit": "cup"
+                },
+                {
+                    "name": "butter",
+                    "quantity": 1,
+                    "unit": "tablespoon"
+                }
+            ],
+            "missing_ingredients": [
+                {
+                    "name": "salt",
+                    "replacement": "none",
+                    "reason": "not detected in inventory"
+                },
+                {
+                    "name": "pepper",
+                    "replacement": "none",
+                    "reason": "not detected in inventory"
+                }
+            ],
+            "nutrition": {
+                "calories": 320,
+                "protein": 40,
+                "carbs": 10,
+                "fat": 12
+            },
+            "steps": [
+                "Preheat the grill to medium-high heat.",
+                "Season the chicken breast with salt and pepper.",
+                "Grill the chicken for 5-6 minutes per side, or until cooked through.",
+                "Meanwhile, melt the butter in a pan and saut\u00e9 the green leaves and corn until tender.",
+                "Serve the grilled chicken with the saut\u00e9ed green leaves and corn."
+            ]
+        },
+        "shopping_recommendation": [
+            {
+                "ingredient": "salt",
+                "reason": "missing from inventory and necessary for recipe"
+            },
+            {
+                "ingredient": "pepper",
+                "reason": "missing from inventory and necessary for recipe"
+            }
+        ],
+        "food_waste_tips": [
+            "Use the detected apples and bananas to make a fruit salad for dessert.",
+            "Consider using the milk to make a creamy sauce for the grilled chicken."
+        ],
+        "confidence_warnings": [
+            "The confidence score for corn is low (0.5959), please verify manually."
+        ]
+    },
+    "llm_generated_time": "2026-07-29T07:33:26.081497Z"
+}
