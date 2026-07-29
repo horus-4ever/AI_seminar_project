@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Smart Recipe Assistant</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="bg-blob blob-one"></div>
+  <div class="bg-blob blob-two"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="AI Smart Recipe Assistant home">
+        <span class="brand-mark">🍳</span>
+        <span>
+          <strong>AI Smart Recipe</strong>
+          <small>Your fridge, your next meal</small>
+        </span>
+      </a>
+
+      <div class="engine-status" id="engineStatus" title="Recipe engine status">
+        <span class="status-dot"></span>
+        <span id="engineStatusText">Getting ready</span>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <span class="mini-badge">✨ Cook with what you have</span>
+        <h1>What’s in your fridge?</h1>
+        <p>Add a photo, pick your mood, and let’s find something delicious.</p>
+      </div>
+
+      <div class="hero-food" aria-hidden="true">
+        <span>🥕</span>
+        <span>🍅</span>
+        <span>🥚</span>
+        <span>🧀</span>
+      </div>
+    </section>
+
+    <section class="journey" aria-label="Recipe steps">
+      <div class="journey-step active" id="stepUpload">
+        <span>1</span>
+        <strong>Add photo</strong>
+      </div>
+      <div class="journey-line"></div>
+      <div class="journey-step" id="stepPreferences">
+        <span>2</span>
+        <strong>Pick preferences</strong>
+      </div>
+      <div class="journey-line"></div>
+      <div class="journey-step" id="stepPrepare">
+        <span>3</span>
+        <strong>Get ideas</strong>
+      </div>
+    </section>
+
+    <div class="main-grid">
+      <section class="panel upload-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">Step 1</span>
+            <h2>Add your fridge</h2>
+          </div>
+          <button class="tiny-button hidden" id="removeMediaButton" type="button">Remove</button>
+        </div>
+
+        <div class="drop-zone" id="dropZone">
+          <div class="upload-empty" id="emptyState">
+            <div class="upload-illustration">
+              <span class="camera">📸</span>
+              <span class="sparkle sparkle-a">✦</span>
+              <span class="sparkle sparkle-b">✦</span>
+            </div>
+            <h3>Drop it here</h3>
+            <p>Photo or video</p>
+            <button class="primary-button" id="chooseMediaButton" type="button">
+              <span>＋</span> Choose from device
+            </button>
+          </div>
+
+          <div class="preview-wrap hidden" id="previewWrap">
+            <img id="imagePreview" class="media-preview hidden" alt="Selected refrigerator image" />
+            <video id="videoPreview" class="media-preview hidden" controls muted playsinline></video>
+
+            <div class="preview-overlay">
+              <button class="glass-button" id="changeMediaButton" type="button">Change</button>
+            </div>
+          </div>
+
+          <input id="mediaInput" type="file" accept="image/*,video/*" hidden />
+        </div>
+
+        <div class="file-chip hidden" id="fileChip">
+          <span class="file-icon" id="fileIcon">🖼️</span>
+          <div>
+            <strong id="selectedFileName">Your upload</strong>
+            <small id="selectedFileMeta"></small>
+          </div>
+          <span class="file-check">✓</span>
+        </div>
+      </section>
+
+      <section class="panel preferences-panel" id="preferencesSection">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">Step 2</span>
+            <h2>Make it yours</h2>
+          </div>
+          <button class="tiny-button" id="resetPreferencesButton" type="button">Reset</button>
+        </div>
+
+        <div class="preference-block">
+          <div class="block-title">
+            <span>🍽️</span>
+            <h3>What are we making?</h3>
+          </div>
+
+          <div class="meal-grid">
+            <label class="select-card">
+              <input type="radio" name="mealType" value="breakfast" />
+              <span><b>🌅</b>Breakfast</span>
+            </label>
+            <label class="select-card">
+              <input type="radio" name="mealType" value="lunch" />
+              <span><b>☀️</b>Lunch</span>
+            </label>
+            <label class="select-card">
+              <input type="radio" name="mealType" value="dinner" checked />
+              <span><b>🌙</b>Dinner</span>
+            </label>
+            <label class="select-card">
+              <input type="radio" name="mealType" value="snack" />
+              <span><b>🍿</b>Snack</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="preference-block">
+          <div class="block-title">
+            <span>🥗</span>
+            <h3>Eating style</h3>
+          </div>
+
+          <div class="choice-row" id="dietChoices">
+            <label class="choice-pill">
+              <input type="radio" name="dietType" value="normal" checked />
+              <span>Anything</span>
+            </label>
+            <label class="choice-pill">
+              <input type="radio" name="dietType" value="vegetarian" />
+              <span>Vegetarian</span>
+            </label>
+            <label class="choice-pill">
+              <input type="radio" name="dietType" value="vegan" />
+              <span>Vegan</span>
+            </label>
+            <label class="choice-pill">
+              <input type="radio" name="dietType" value="pescatarian" />
+              <span>Pescatarian</span>
+            </label>
+            <label class="choice-pill">
+              <input type="radio" name="dietType" value="halal" />
+              <span>Halal</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="quick-fields">
+          <label class="pretty-field">
+            <span class="field-icon">🎯</span>
+            <span class="field-content">
+              <small>Goal</small>
+              <select id="nutritionGoal">
+                <option value="healthy_balanced">Balanced</option>
+                <option value="weight_loss">Weight loss</option>
+                <option value="high_protein">High protein</option>
+                <option value="low_calorie">Low calorie</option>
+                <option value="low_carb">Low carb</option>
+                <option value="muscle_gain">Muscle gain</option>
+              </select>
+            </span>
+          </label>
+
+          <label class="pretty-field">
+            <span class="field-icon">👥</span>
+            <span class="field-content">
+              <small>Servings</small>
+              <input id="servings" type="number" min="1" max="12" value="2" />
+            </span>
+          </label>
+
+          <label class="pretty-field">
+            <span class="field-icon">⏱️</span>
+            <span class="field-content">
+              <small>Time</small>
+              <select id="maxTime">
+                <option value="15">15 min</option>
+                <option value="30" selected>30 min</option>
+                <option value="45">45 min</option>
+                <option value="60">60 min</option>
+              </select>
+            </span>
+          </label>
+        </div>
+
+        <details class="more-options">
+          <summary>
+            <span>
+              <b>⚙️</b>
+              Fine-tune my recipe
+            </span>
+            <span class="summary-plus">＋</span>
+          </summary>
+
+          <div class="more-content">
+            <div class="form-grid three">
+              <label class="field">
+                <span>Cuisine</span>
+                <select id="cuisine">
+                  <option value="any">Surprise me</option>
+                  <option value="indian">Indian</option>
+                  <option value="japanese">Japanese</option>
+                  <option value="italian">Italian</option>
+                  <option value="chinese">Chinese</option>
+                  <option value="korean">Korean</option>
+                  <option value="mediterranean">Mediterranean</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Spice</span>
+                <select id="spiceLevel">
+                  <option value="none">No spice</option>
+                  <option value="mild">Mild</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="hot">Hot</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span>Skill level</span>
+                <select id="cookingSkill">
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="form-grid">
+              <label class="field">
+                <span>Allergies</span>
+                <input id="allergies" type="text" placeholder="Peanut, sesame..." />
+              </label>
+
+              <label class="field">
+                <span>Skip these</span>
+                <input id="avoidIngredients" type="text" placeholder="Mushroom, onion..." />
+              </label>
+            </div>
+
+            <div class="appliance-area">
+              <span class="small-label">I can use</span>
+              <div class="choice-row" id="applianceChoices">
+                <label class="choice-pill appliance">
+                  <input type="checkbox" value="stove" checked />
+                  <span>🔥 Stove</span>
+                </label>
+                <label class="choice-pill appliance">
+                  <input type="checkbox" value="microwave" checked />
+                  <span>📡 Microwave</span>
+                </label>
+                <label class="choice-pill appliance">
+                  <input type="checkbox" value="oven" />
+                  <span>♨️ Oven</span>
+                </label>
+                <label class="choice-pill appliance">
+                  <input type="checkbox" value="air_fryer" />
+                  <span>🌪️ Air fryer</span>
+                </label>
+                <label class="choice-pill appliance">
+                  <input type="checkbox" value="rice_cooker" />
+                  <span>🍚 Rice cooker</span>
+                </label>
+              </div>
+            </div>
+
+            <label class="field">
+              <span>Anything else?</span>
+              <textarea id="additionalRequest" placeholder="Quick, kid-friendly, no deep frying..."></textarea>
+            </label>
+          </div>
+        </details>
+      </section>
+    </div>
+
+    <section class="recipe-bar">
+      <div class="recipe-summary">
+        <span class="summary-emoji">🍲</span>
+        <div>
+          <small>Your choice</small>
+          <strong id="preferenceSummary">Dinner · Balanced · 2 servings</strong>
+        </div>
+      </div>
+
+      <button class="recipe-button" id="prepareButton" type="button">
+        <span>✨</span>
+        Make my recipe
+        <b>→</b>
+      </button>
+    </section>
+
+    <section class="loading-card hidden" id="loadingPanel" aria-live="polite">
+      <div class="food-loader" aria-hidden="true">
+        <span>🥕</span>
+        <span>🍅</span>
+        <span>🥚</span>
+      </div>
+      <div>
+        <h3 id="loadingTitle">Checking your fridge...</h3>
+        <p id="loadingMessage">Finding the best ingredients for you.</p>
+      </div>
+    </section>
+
+    <section class="result-card hidden" id="resultCard">
+      <div class="result-celebration" aria-hidden="true">🎉</div>
+
+      <div class="result-heading">
+        <div>
+          <span class="result-label">Fridge scan complete</span>
+          <h2>Nice! Here’s what we found.</h2>
+        </div>
+        <span class="saved-id" id="savedId"></span>
+      </div>
+
+      <p class="result-summary" id="resultSummary"></p>
+      <div class="ingredient-list" id="ingredientList"></div>
+
+      <button class="secondary-button" id="startAgainButton" type="button">
+        Scan another fridge
+      </button>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
