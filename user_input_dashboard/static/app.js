@@ -375,7 +375,188 @@ function renderResult(result) {
     block: "start",
   });
 }
+function wait(milliseconds) {
+  return new Promise((resolve) => {
+    window.setTimeout(resolve, milliseconds);
+  });
+}
 
+function openScanOverlay() {
+  const overlay = el("scanOverlay");
+
+  document.body.classList.add("scan-active");
+
+  overlay.classList.remove(
+    "hidden",
+    "scan-success"
+  );
+
+  el("scanImage").src = state.objectUrl || "";
+
+  el("scanStage").textContent =
+    "Ingredient detection";
+
+  el("scanTitle").textContent =
+    "Looking inside your fridge...";
+
+  el("scanMessage").textContent =
+    "Finding the ingredients in your photo.";
+
+  el("detectedFeed").innerHTML = "";
+  el("detectedFeed").classList.add("hidden");
+
+  el("scanProgressBar").style.width = "15%";
+}
+
+function closeScanOverlay() {
+  el("scanOverlay").classList.add("hidden");
+
+  document.body.classList.remove(
+    "scan-active"
+  );
+}
+
+function setScanState({
+  stage,
+  title,
+  message,
+  progress,
+}) {
+  if (stage) {
+    el("scanStage").textContent = stage;
+  }
+
+  if (title) {
+    el("scanTitle").textContent = title;
+  }
+
+  if (message) {
+    el("scanMessage").textContent = message;
+  }
+
+  if (progress !== undefined) {
+    el("scanProgressBar").style.width =
+      `${progress}%`;
+  }
+}
+
+async function showDetectedIngredients(
+  ingredients
+) {
+  const feed = el("detectedFeed");
+
+  feed.innerHTML = "";
+  feed.classList.remove("hidden");
+
+  if (!ingredients.length) {
+    const emptyItem =
+      document.createElement("div");
+
+    emptyItem.className = "detected-item";
+
+    emptyItem.innerHTML = `
+      <span class="detected-item-icon">!</span>
+      No clear ingredients found
+    `;
+
+    feed.appendChild(emptyItem);
+
+    await wait(900);
+    return;
+  }
+
+  for (let index = 0;
+       index < ingredients.length;
+       index += 1) {
+
+    const item = ingredients[index];
+
+    const ingredientElement =
+      document.createElement("div");
+
+    ingredientElement.className =
+      "detected-item";
+
+    const confidence = Math.round(
+      Number(item.average_confidence || 0) * 100
+    );
+
+    ingredientElement.innerHTML = `
+      <span class="detected-item-icon">✓</span>
+
+      <span>
+        ${titleCase(item.ingredient)}
+      </span>
+
+      <span class="detected-item-count">
+        ×${item.detected_count}
+        · ${confidence}%
+      </span>
+    `;
+
+    feed.appendChild(ingredientElement);
+
+    const progress =
+      35 +
+      Math.round(
+        ((index + 1) /
+          ingredients.length) *
+          35
+      );
+
+    el("scanProgressBar").style.width =
+      `${progress}%`;
+
+    await wait(450);
+  }
+}
+
+async function showPreparationStage(
+  preferences
+) {
+  const meal = titleCase(
+    preferences.meal_type
+  );
+
+  el("detectedFeed").classList.add(
+    "hidden"
+  );
+
+  setScanState({
+    stage: "Recipe preparation",
+    title: `Preparing ${meal.toLowerCase()} recipes for you...`,
+    message:
+      "Matching your ingredients with your food preferences.",
+    progress: 82,
+  });
+
+  await wait(1000);
+
+  setScanState({
+    title: "Creating something delicious...",
+    message:
+      `Using your ${meal.toLowerCase()} choices, cooking time, and available ingredients.`,
+    progress: 94,
+  });
+
+  await wait(1400);
+}
+
+async function showCompletedStage() {
+  el("scanOverlay").classList.add(
+    "scan-success"
+  );
+
+  setScanState({
+    stage: "Ready",
+    title: "Everything is prepared!",
+    message:
+      "Your ingredients and preferences have been saved.",
+    progress: 100,
+  });
+
+  await wait(1000);
+}
 async function prepareRecipes() {
   if (!state.file) {
     showToast("Add a fridge photo first.");
@@ -384,7 +565,7 @@ async function prepareRecipes() {
 
   if (state.file.type.startsWith("video/")) {
     showToast(
-      "Video recipes are coming next—choose a photo for now."
+      "Choose a photo for now. Video support is coming next."
     );
     return;
   }
@@ -396,15 +577,20 @@ async function prepareRecipes() {
 
   if (!state.modelReady) {
     showToast(
-      "The recipe engine needs a little setup first."
+      "The recipe engine is not ready yet."
     );
     return;
   }
 
-  const preferences = collectPreferences();
+  const preferences =
+    collectPreferences();
 
-  if (!preferences.available_appliances.length) {
-    showToast("Pick at least one appliance.");
+  if (
+    !preferences.available_appliances.length
+  ) {
+    showToast(
+      "Pick at least one appliance."
+    );
     return;
   }
 
@@ -424,17 +610,22 @@ async function prepareRecipes() {
 
   button.disabled = true;
 
-  button.innerHTML =
-    "<span>⏳</span> Working on it...";
+  button.innerHTML = `
+    <span>⏳</span>
+    Preparing...
+  `;
 
-  el("loadingPanel").classList.remove("hidden");
-  el("resultCard").classList.add("hidden");
-
-  el("stepPrepare").classList.add("active");
-
-  startLoadingMessages();
+  openScanOverlay();
 
   try {
+    setScanState({
+      stage: "Ingredient detection",
+      title: "Scanning your image...",
+      message:
+        "Our AI is checking each visible ingredient.",
+      progress: 25,
+    });
+
     const response = await fetch(
       "/api/prepare-recipes",
       {
@@ -448,29 +639,86 @@ async function prepareRecipes() {
     if (!response.ok) {
       throw new Error(
         result.detail ||
-          "Something went wrong. Please try again."
+        "Something went wrong."
       );
     }
 
-    renderResult(result);
+    const ingredients =
+      result.detected_ingredients || [];
+
+    setScanState({
+      stage: "Ingredients found",
+      title: ingredients.length
+        ? `We found ${ingredients.length} ingredient ${
+            ingredients.length === 1
+              ? "type"
+              : "types"
+          }!`
+        : "Scan completed",
+      message: ingredients.length
+        ? "Here is what your fridge has today."
+        : "Try another brighter or clearer photo.",
+      progress: 35,
+    });
+
+    await showDetectedIngredients(
+      ingredients
+    );
+
+    await wait(500);
+
+    await showPreparationStage(
+      preferences
+    );
+
+    await showCompletedStage();
+
+    closeScanOverlay();
 
     showToast(
-      "Your fridge scan is ready!"
+      `${titleCase(
+        preferences.meal_type
+      )} request saved successfully!`
     );
+
+    /*
+      Keep this only if you still want the
+      result section below the dashboard.
+
+      Remove it if the modal should be the
+      only visible result.
+    */
+
+    // renderResult(result);
+
   } catch (error) {
-    showToast(error.message);
+    setScanState({
+      stage: "Something went wrong",
+      title: "We could not finish the scan",
+      message:
+        error.message ||
+        "Please try another image.",
+      progress: 100,
+    });
+
+    await wait(2200);
+
+    closeScanOverlay();
+
+    showToast(
+      error.message ||
+      "Please try again."
+    );
   } finally {
-    stopLoadingMessages();
-
-    el("loadingPanel").classList.add("hidden");
-
     button.disabled = false;
 
-    button.innerHTML =
-      "<span>✨</span> Make my recipe <b>→</b>";
+    button.innerHTML = `
+      <span>✨</span>
+      Make my recipe
+      <b>→</b>
+    `;
   }
 }
-
 function startAgain() {
   clearPreview();
 
