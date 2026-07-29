@@ -35,7 +35,7 @@ class Model:
         # create a result object, then iter over all the boxes
         result = PredictionResult()
         confidences = {}
-        for box in result.boxes:
+        for box in pred_results:
             # get the class name
             cls_id = int(box.cls[0])
             cls_name = self.model.names[cls_id]
