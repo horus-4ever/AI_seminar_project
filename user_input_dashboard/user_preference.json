@@ -1,0 +1,279 @@
+[
+  {
+    "created_at_utc": "2026-07-29T05:26:55.801986+00:00",
+    "completed_at_utc": "2026-07-29T05:26:56.420036+00:00",
+    "media": {
+      "type": "image",
+      "original_filename": "fridge.jpg",
+      "saved_filename": "20260729T052655_801986Z_5d0cc79e_fridge.jpg",
+      "saved_path": "uploads\\20260729T052655_801986Z_5d0cc79e_fridge.jpg",
+      "content_type": "image/jpeg"
+    },
+    "user_preferences": {
+      "meal_type": "dinner",
+      "diet_type": "normal",
+      "nutrition_goal": "healthy_balanced",
+      "servings": 2,
+      "maximum_cooking_time_minutes": 30,
+      "preferred_cuisine": "any",
+      "spice_level": "medium",
+      "cooking_skill": "beginner",
+      "allergies": [],
+      "excluded_ingredients": [],
+      "available_appliances": [
+        "stove",
+        "microwave"
+      ],
+      "additional_request": null
+    },
+    "inventory_summary": [],
+    "id": 1
+  },
+  {
+    "created_at_utc": "2026-07-29T05:28:08.032388+00:00",
+    "completed_at_utc": "2026-07-29T05:28:08.283181+00:00",
+    "media": {
+      "type": "image",
+      "original_filename": "Fridge-1.webp",
+      "saved_filename": "20260729T052808_032388Z_5cf3c9ea_Fridge-1.webp",
+      "saved_path": "uploads\\20260729T052808_032388Z_5cf3c9ea_Fridge-1.webp",
+      "content_type": "image/webp"
+    },
+    "user_preferences": {
+      "meal_type": "dinner",
+      "diet_type": "normal",
+      "nutrition_goal": "healthy_balanced",
+      "servings": 2,
+      "maximum_cooking_time_minutes": 30,
+      "preferred_cuisine": "any",
+      "spice_level": "medium",
+      "cooking_skill": "beginner",
+      "allergies": [],
+      "excluded_ingredients": [],
+      "available_appliances": [
+        "stove",
+        "microwave"
+      ],
+      "additional_request": null
+    },
+    "inventory_summary": [
+      {
+        "ingredient": "egg",
+        "detected_count": 1,
+        "average_confidence": 0.7391
+      }
+    ],
+    "id": 2
+  },
+  {
+    "created_at_utc": "2026-07-29T05:29:44.512334+00:00",
+    "completed_at_utc": "2026-07-29T05:29:44.687496+00:00",
+    "media": {
+      "type": "image",
+      "original_filename": "fridge-sunnyside-up-4.jpg",
+      "saved_filename": "20260729T052944_512334Z_87c4f06e_fridge-sunnyside-up-4.jpg",
+      "saved_path": "uploads\\20260729T052944_512334Z_87c4f06e_fridge-sunnyside-up-4.jpg",
+      "content_type": "image/jpeg"
+    },
+    "user_preferences": {
+      "meal_type": "dinner",
+      "diet_type": "normal",
+      "nutrition_goal": "healthy_balanced",
+      "servings": 2,
+      "maximum_cooking_time_minutes": 30,
+      "preferred_cuisine": "any",
+      "spice_level": "medium",
+      "cooking_skill": "beginner",
+      "allergies": [],
+      "excluded_ingredients": [],
+      "available_appliances": [
+        "stove",
+        "microwave"
+      ],
+      "additional_request": null
+    },
+    "inventory_summary": [],
+    "id": 3
+  },
+  {
+    "created_at_utc": "2026-07-29T05:30:24.377688+00:00",
+    "completed_at_utc": "2026-07-29T05:30:24.611999+00:00",
+    "media": {
+      "type": "image",
+      "original_filename": "Fridge-1.webp",
+      "saved_filename": "20260729T053024_377688Z_3b92493b_Fridge-1.webp",
+      "saved_path": "uploads\\20260729T053024_377688Z_3b92493b_Fridge-1.webp",
+      "content_type": "image/webp"
+    },
+    "user_preferences": {
+      "meal_type": "dinner",
+      "diet_type": "normal",
+      "nutrition_goal": "healthy_balanced",
+      "servings": 2,
+      "maximum_cooking_time_minutes": 30,
+      "preferred_cuisine": "any",
+      "spice_level": "medium",
+      "cooking_skill": "beginner",
+      "allergies": [],
+      "excluded_ingredients": [],
+      "available_appliances": [
+        "stove",
+        "microwave"
+      ],
+      "additional_request": null
+    },
+    "inventory_summary": [
+      {
+        "ingredient": "egg",
+        "detected_count": 1,
+        "average_confidence": 0.7391
+      }
+    ],
+    "id": 4
+  },
+  {
+    "created_at_utc": "2026-07-29T05:34:04.866545+00:00",
+    "completed_at_utc": "2026-07-29T05:34:05.277095+00:00",
+    "media": {
+      "type": "image",
+      "original_filename": "fridge.jpg",
+      "saved_filename": "20260729T053404_866545Z_3d1c034b_fridge.jpg",
+      "saved_path": "uploads\\20260729T053404_866545Z_3d1c034b_fridge.jpg",
+      "content_type": "image/jpeg"
+    },
+    "user_preferences": {
+      "meal_type": "dinner",
+      "diet_type": "normal",
+      "nutrition_goal": "healthy_balanced",
+      "servings": 2,
+      "maximum_cooking_time_minutes": 30,
+      "preferred_cuisine": "any",
+      "spice_level": "medium",
+      "cooking_skill": "beginner",
+      "allergies": [],
+      "excluded_ingredients": [],
+      "available_appliances": [
+        "stove",
+        "microwave"
+      ],
+      "additional_request": null
+    },
+    "inventory_summary": [
+      {
+        "ingredient": "egg",
+        "detected_count": 1,
+        "average_confidence": 0.6859
+      }
+    ],
+    "id": 5
+  },
+  {
+    "created_at_utc": "2026-07-29T05:34:38.381375+00:00",
+    "completed_at_utc": "2026-07-29T05:34:38.607889+00:00",
+    "media": {
+      "type": "image",
+      "original_filename": "fridge.jpg",
+      "saved_filename": "20260729T053438_381375Z_939bf19f_fridge.jpg",
+      "saved_path": "uploads\\20260729T053438_381375Z_939bf19f_fridge.jpg",
+      "content_type": "image/jpeg"
+    },
+    "user_preferences": {
+      "meal_type": "dinner",
+      "diet_type": "normal",
+      "nutrition_goal": "high_protein",
+      "servings": 2,
+      "maximum_cooking_time_minutes": 30,
+      "preferred_cuisine": "any",
+      "spice_level": "medium",
+      "cooking_skill": "beginner",
+      "allergies": [],
+      "excluded_ingredients": [],
+      "available_appliances": [
+        "stove",
+        "microwave",
+        "oven"
+      ],
+      "additional_request": null
+    },
+    "inventory_summary": [
+      {
+        "ingredient": "egg",
+        "detected_count": 1,
+        "average_confidence": 0.6859
+      }
+    ],
+    "id": 6
+  },
+  {
+    "created_at_utc": "2026-07-29T05:35:23.664283+00:00",
+    "completed_at_utc": "2026-07-29T05:35:23.956356+00:00",
+    "media": {
+      "type": "image",
+      "original_filename": "DSC_5677_JPG_jpg.rf.f86c114f1535027f78040f891bfe5f10.jpg",
+      "saved_filename": "20260729T053523_664283Z_ae5a6778_DSC_5677_JPG_jpg.rf.f86c114f1535027f78040f891bfe5f10.jpg",
+      "saved_path": "uploads\\20260729T053523_664283Z_ae5a6778_DSC_5677_JPG_jpg.rf.f86c114f1535027f78040f891bfe5f10.jpg",
+      "content_type": "image/jpeg"
+    },
+    "user_preferences": {
+      "meal_type": "dinner",
+      "diet_type": "normal",
+      "nutrition_goal": "high_protein",
+      "servings": 2,
+      "maximum_cooking_time_minutes": 30,
+      "preferred_cuisine": "any",
+      "spice_level": "medium",
+      "cooking_skill": "beginner",
+      "allergies": [],
+      "excluded_ingredients": [],
+      "available_appliances": [
+        "stove",
+        "microwave",
+        "oven"
+      ],
+      "additional_request": null
+    },
+    "inventory_summary": [
+      {
+        "ingredient": "green leaves",
+        "detected_count": 1,
+        "average_confidence": 0.956
+      },
+      {
+        "ingredient": "meat",
+        "detected_count": 2,
+        "average_confidence": 0.902
+      },
+      {
+        "ingredient": "milk",
+        "detected_count": 1,
+        "average_confidence": 0.864
+      },
+      {
+        "ingredient": "chicken",
+        "detected_count": 1,
+        "average_confidence": 0.8602
+      },
+      {
+        "ingredient": "butter",
+        "detected_count": 1,
+        "average_confidence": 0.8423
+      },
+      {
+        "ingredient": "apple",
+        "detected_count": 1,
+        "average_confidence": 0.7955
+      },
+      {
+        "ingredient": "banana",
+        "detected_count": 2,
+        "average_confidence": 0.7622
+      },
+      {
+        "ingredient": "corn",
+        "detected_count": 1,
+        "average_confidence": 0.5959
+      }
+    ],
+    "id": 7
+  }
+]
