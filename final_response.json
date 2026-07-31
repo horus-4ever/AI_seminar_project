@@ -70,76 +70,224 @@
     ],
     "id": 7,
     "llm_result": {
-        "recipe": {
-            "name": "Grilled Chicken with Green Leaves and Corn",
-            "description": "A quick and easy dinner recipe that combines the detected ingredients with the user's preferences for a high-protein meal.",
-            "time_minutes": 20,
-            "difficulty": "beginner",
-            "ingredients": [
-                {
-                    "name": "chicken",
-                    "quantity": 1,
-                    "unit": "breast"
+        "recipes": [
+            {
+                "name": "Quick Chicken and Green Leaves Stir-Fry",
+                "description": "A simple and fast stir-fry recipe using chicken and green leaves",
+                "time_minutes": 15,
+                "difficulty": "easy",
+                "ingredients": [
+                    {
+                        "name": "chicken",
+                        "quantity": 1,
+                        "unit": "breast"
+                    },
+                    {
+                        "name": "green leaves",
+                        "quantity": 1,
+                        "unit": "bunch"
+                    },
+                    {
+                        "name": "butter",
+                        "quantity": 1,
+                        "unit": "tablespoon"
+                    }
+                ],
+                "missing_ingredients": [
+                    {
+                        "name": "salt",
+                        "replacement": "none",
+                        "reason": "not detected in inventory"
+                    },
+                    {
+                        "name": "pepper",
+                        "replacement": "none",
+                        "reason": "not detected in inventory"
+                    }
+                ],
+                "nutrition": {
+                    "calories": 320,
+                    "protein": 35,
+                    "carbs": 5,
+                    "fat": 15
                 },
-                {
-                    "name": "green leaves",
-                    "quantity": 1,
-                    "unit": "cup"
-                },
-                {
-                    "name": "corn",
-                    "quantity": 1,
-                    "unit": "cup"
-                },
-                {
-                    "name": "butter",
-                    "quantity": 1,
-                    "unit": "tablespoon"
-                }
-            ],
-            "missing_ingredients": [
-                {
-                    "name": "salt",
-                    "replacement": "none",
-                    "reason": "not detected in inventory"
-                },
-                {
-                    "name": "pepper",
-                    "replacement": "none",
-                    "reason": "not detected in inventory"
-                }
-            ],
-            "nutrition": {
-                "calories": 320,
-                "protein": 40,
-                "carbs": 10,
-                "fat": 12
+                "steps": [
+                    "Heat butter in a pan over medium heat",
+                    "Add chicken and cook until browned",
+                    "Add green leaves and stir-fry until wilted",
+                    "Season with salt and pepper to taste"
+                ]
             },
-            "steps": [
-                "Preheat the grill to medium-high heat.",
-                "Season the chicken breast with salt and pepper.",
-                "Grill the chicken for 5-6 minutes per side, or until cooked through.",
-                "Meanwhile, melt the butter in a pan and saut\u00e9 the green leaves and corn until tender.",
-                "Serve the grilled chicken with the saut\u00e9ed green leaves and corn."
-            ]
-        },
+            {
+                "name": "Healthy Chicken and Apple Salad",
+                "description": "A healthy and refreshing salad recipe using chicken and apple",
+                "time_minutes": 20,
+                "difficulty": "medium",
+                "ingredients": [
+                    {
+                        "name": "chicken",
+                        "quantity": 1,
+                        "unit": "breast"
+                    },
+                    {
+                        "name": "apple",
+                        "quantity": 1,
+                        "unit": "medium"
+                    },
+                    {
+                        "name": "green leaves",
+                        "quantity": 1,
+                        "unit": "bunch"
+                    }
+                ],
+                "missing_ingredients": [
+                    {
+                        "name": "mayonnaise",
+                        "replacement": "yogurt",
+                        "reason": "not detected in inventory"
+                    }
+                ],
+                "nutrition": {
+                    "calories": 250,
+                    "protein": 30,
+                    "carbs": 20,
+                    "fat": 5
+                },
+                "steps": [
+                    "Grill chicken until cooked",
+                    "Chop apple and green leaves",
+                    "Mix all ingredients together",
+                    "Add mayonnaise or yogurt for dressing"
+                ]
+            },
+            {
+                "name": "High-Protein Chicken and Meat Stir-Fry",
+                "description": "A high-protein stir-fry recipe using chicken and meat",
+                "time_minutes": 25,
+                "difficulty": "medium",
+                "ingredients": [
+                    {
+                        "name": "chicken",
+                        "quantity": 1,
+                        "unit": "breast"
+                    },
+                    {
+                        "name": "meat",
+                        "quantity": 2,
+                        "unit": "slices"
+                    },
+                    {
+                        "name": "butter",
+                        "quantity": 1,
+                        "unit": "tablespoon"
+                    }
+                ],
+                "missing_ingredients": [
+                    {
+                        "name": "soy sauce",
+                        "replacement": "none",
+                        "reason": "not detected in inventory"
+                    }
+                ],
+                "nutrition": {
+                    "calories": 400,
+                    "protein": 50,
+                    "carbs": 5,
+                    "fat": 20
+                },
+                "steps": [
+                    "Heat butter in a pan over medium heat",
+                    "Add chicken and cook until browned",
+                    "Add meat and stir-fry until cooked",
+                    "Season with soy sauce to taste"
+                ]
+            },
+            {
+                "name": "Gourmet Chicken and Corn Fritters",
+                "description": "A gourmet recipe using chicken and corn to make fritters",
+                "time_minutes": 30,
+                "difficulty": "hard",
+                "ingredients": [
+                    {
+                        "name": "chicken",
+                        "quantity": 1,
+                        "unit": "breast"
+                    },
+                    {
+                        "name": "corn",
+                        "quantity": 1,
+                        "unit": "cup"
+                    },
+                    {
+                        "name": "milk",
+                        "quantity": 1,
+                        "unit": "cup"
+                    },
+                    {
+                        "name": "butter",
+                        "quantity": 1,
+                        "unit": "tablespoon"
+                    }
+                ],
+                "missing_ingredients": [
+                    {
+                        "name": "flour",
+                        "replacement": "none",
+                        "reason": "not detected in inventory"
+                    },
+                    {
+                        "name": "eggs",
+                        "replacement": "none",
+                        "reason": "not detected in inventory"
+                    }
+                ],
+                "nutrition": {
+                    "calories": 500,
+                    "protein": 30,
+                    "carbs": 40,
+                    "fat": 25
+                },
+                "steps": [
+                    "Shred chicken and mix with corn",
+                    "Add milk and mix well",
+                    "Add flour and eggs to make a batter",
+                    "Fry batter in butter until golden brown"
+                ]
+            }
+        ],
         "shopping_recommendation": [
             {
                 "ingredient": "salt",
-                "reason": "missing from inventory and necessary for recipe"
+                "reason": "not detected in inventory"
             },
             {
                 "ingredient": "pepper",
-                "reason": "missing from inventory and necessary for recipe"
+                "reason": "not detected in inventory"
+            },
+            {
+                "ingredient": "mayonnaise",
+                "reason": "not detected in inventory"
+            },
+            {
+                "ingredient": "soy sauce",
+                "reason": "not detected in inventory"
+            },
+            {
+                "ingredient": "flour",
+                "reason": "not detected in inventory"
+            },
+            {
+                "ingredient": "eggs",
+                "reason": "not detected in inventory"
             }
         ],
         "food_waste_tips": [
-            "Use the detected apples and bananas to make a fruit salad for dessert.",
-            "Consider using the milk to make a creamy sauce for the grilled chicken."
+            "Use green leaves within a day or two to avoid spoilage",
+            "Consume apple and banana within a few days to avoid over-ripening"
         ],
         "confidence_warnings": [
-            "The confidence score for corn is low (0.5959), please verify manually."
+            "Corn confidence is low. Verify manually."
         ]
     },
-    "llm_generated_time": "2026-07-29T07:33:26.081497Z"
+    "llm_generated_time": "2026-07-31T07:37:20.107901Z"
 }
